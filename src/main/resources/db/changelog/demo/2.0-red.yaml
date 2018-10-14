@@ -12,7 +12,9 @@ databaseChangeLog:
             columns:
               - column:
                   name: address
-                  type: varchar(255)
+                  type: text
+                  constraints:
+                    nullable: false
                   
   - changeSet:
       id: create_communication_pref
