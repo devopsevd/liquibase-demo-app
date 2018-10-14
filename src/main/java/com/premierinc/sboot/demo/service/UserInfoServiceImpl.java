@@ -25,7 +25,7 @@ public class UserInfoServiceImpl implements UserInfoService{
                 ,userInfoDTO.getLastName());
         if(null == userInfo){
             userInfo = new UserInfo(userInfoDTO.getId(),userInfoDTO.getLastName()
-                    ,userInfoDTO.getFirstName());
+                    ,userInfoDTO.getFirstName(),userInfoDTO.getAddress());
         }
         List<CommunicationPref> communicationPrefs = new ArrayList<>();
         for(String emailAddress: userInfoDTO.getEmailAddresses()){
@@ -47,7 +47,7 @@ public class UserInfoServiceImpl implements UserInfoService{
                 emailAddresses.add(communicationPref.getCommunicationPrefId().getCommunicationId());
             }
             userInfoDTOs.add(new UserInfoDTO(userInfo.getUserId(),userInfo.getFirstName()
-                    ,userInfo.getLastName(), emailAddresses));
+                    ,userInfo.getLastName(),userInfo.getAddress(), emailAddresses));
         }
         return userInfoDTOs;
     }
