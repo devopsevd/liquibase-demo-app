@@ -3,6 +3,18 @@ databaseChangeLog:
       dbms: postgresql
 
   - changeSet:
+      id:  addColumn-new field
+      author: ratna
+      comment: "adding a new field"
+      changes:
+        - addColumn:
+            tableName: user_info
+            columns:
+              - column:
+                  name: address
+                  type: varchar(255)
+                  
+  - changeSet:
       id: create_communication_pref
       author: pavi
       comment: "basic communication preference table"
