@@ -19,6 +19,10 @@ public class UserInfoDTO {
     @NotNull
     @Size(min=1)
     private String lastName;
+    
+    @NotNull
+    @Size(min=1)
+    private String address;
 
     private String userName;
 
@@ -34,10 +38,11 @@ public class UserInfoDTO {
     public UserInfoDTO() {
     }
 
-    public UserInfoDTO(Integer id, String firstName, String lastName, List<String> emailAddresses) {
+    public UserInfoDTO(Integer id, String firstName, String lastName, String address, List<String> emailAddresses) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
+        this.address = address;
         this.userName = this.firstName + " " + this.lastName;
         this.emailAddresses = emailAddresses;
     }
@@ -65,6 +70,14 @@ public class UserInfoDTO {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
+    
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
 
     public String getUserName() {
         return userName;
@@ -88,6 +101,7 @@ public class UserInfoDTO {
                 "id='" + id + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
+                ", address='" + address + '\'' +
                 ", userName='" + userName + '\'' +
                 ", emailAddresses=" + emailAddresses +
                 '}';
