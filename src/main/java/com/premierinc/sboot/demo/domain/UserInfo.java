@@ -30,6 +30,9 @@ public class UserInfo implements Serializable{
 
     @Column(name="FIRST_NAME")
     private String firstName;
+    
+    @Column(name="ADDRESS")
+    private String address;
 
     @OneToMany(mappedBy = "userInfo", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private List<CommunicationPref> communicationPrefs;
@@ -37,10 +40,11 @@ public class UserInfo implements Serializable{
     public UserInfo() {
     }
 
-    public UserInfo(Integer userId, String lastName, String firstName) {
+    public UserInfo(Integer userId, String lastName, String firstName, String address) {
         this.userId = userId;
         this.lastName = lastName;
         this.firstName = firstName;
+        this.address = address;
     }
 
     public Integer getUserId() {
@@ -66,6 +70,14 @@ public class UserInfo implements Serializable{
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
+    
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
 
     public List<CommunicationPref> getCommunicationPrefs() {
         return communicationPrefs;
@@ -81,6 +93,7 @@ public class UserInfo implements Serializable{
                 "userId='" + userId + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", firstName='" + firstName + '\'' +
+                ", address='" + address + '\'' +
                 ", communicationPrefs=" + communicationPrefs +
                 '}';
     }
