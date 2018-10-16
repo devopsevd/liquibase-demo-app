@@ -21,8 +21,8 @@
 </head>
 <body class="springOneDemo">
 <div class="springOneHeader">
-    <img src="image/SpringOne-Icon.png" />
-    <span>No Outage Database Development </span>
+    <img src="image/abcInc.png" />
+    <span>No Outage Deployment </span>
     <sup class="version" th:text="'(' + ${version} + ')'"></sup>
 </div>
 <div class="springOneForm">
@@ -40,19 +40,19 @@
                 <input class="lft" type="text" th:field="*{lastName}"/>
             </div>
             <div class="clear spc5">
-                <div th:class="${#fields.hasErrors('address')}? 'lft chr hasError' : 'lft chr hidden'">*</div>
-                <div class="lft lbl">Address: </div>
-                <input class="lft" type="text" th:field="*{address}"/>
-            </div>
-            <div class="clear spc5">
                 <div class="lft">
                     <div th:class="${#fields.hasErrors('emailAddresses')}? 'lft chr hasError' : 'lft chr hidden'">*</div>
                     <div class="lft lbl">Email Address: </div>
                     <pre id='current_emails' th:hidden="true"></pre>
                 </div>
-                <div>
-                    <input type="text" id="input_emails" th:field="*{emailAddresses}"/>
+            <div class="clear spc5">
+                <div th:class="${#fields.hasErrors('address')}? 'lft chr hasError' : 'lft chr hidden'">*</div>
+                <div class="lft lbl">Address: </div>
+                <input class="lft" type="text" th:field="*{address}"/>
                 </div>
+            <div>
+                <input type="text" id="input_emails" th:field="*{emailAddresses}"/>
+            </div>
             </div>
 
             <div class="clear spc5">
