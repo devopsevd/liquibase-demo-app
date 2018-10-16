@@ -47,7 +47,7 @@
                 </div>
             <div class="clear spc5">
                 <div th:class="${#fields.hasErrors('address')}? 'lft chr hasError' : 'lft chr hidden'">*</div>
-                <div class="lft lbl">Address: </div>
+                <div class="lft lbl">City: </div>
                 <input class="lft" type="text" th:field="*{address}"/>
                 </div>
             <div>
@@ -67,7 +67,7 @@
         <table>
             <tr>
                 <th>Name</th>
-                <th>Address</th>
+                <th>City</th>
                 <th>Email Address</th>
             </tr>
             <tr th:each="userInfoDTO : ${userInfoDTOList}">
