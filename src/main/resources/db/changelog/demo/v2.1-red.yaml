@@ -11,7 +11,7 @@ databaseChangeLog:
             dbms: postgresql
             encoding: utf8
             endDelimiter: \nGO
-            path: db/changelog/demo/addColumn.sql
+            path: addColumn.sql
             relativeToChangelogFile: true
             splitStatements: true
             stripComments: true
