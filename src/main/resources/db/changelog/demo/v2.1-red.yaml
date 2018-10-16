@@ -7,14 +7,14 @@ databaseChangeLog:
       author: ratna
       comment: "adding a new field"
       changes:
-        - addColumn:
-            tableName: user_info
-            columns:
-              - column:
-                  name: address
-                  type: text
-                  constraints:
-                    nullable: false
+        - sqlFile:
+            dbms: postgresql
+            encoding: utf8
+            endDelimiter: \nGO
+            path: db/changelog/demo/addColumn.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
                   
   - changeSet:
       id: create_communication_pref
