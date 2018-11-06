@@ -1,2 +1,2 @@
-ALTER TABLE user_info ADD COLUMN address text NOT NULL;
+ALTER TABLE user_info ADD COLUMN address text NOT NULL DEFAULT 'NA';
 GO
