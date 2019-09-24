@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.validation.Valid;
 
+import com.premierinc.sboot.demo.config.FeatureToggles;
+
 @Controller
 public class DemoController {
 
@@ -27,6 +29,8 @@ public class DemoController {
     @RequestMapping("/demoPage")
     public String addUser(@Valid UserInfoDTO userInfoDTO, BindingResult bindingResult, Model model) {
 
+        String flag = "unreleased";
+
         logger.info("UserInfo submitted: " + userInfoDTO);
 
         boolean hasErrors = bindingResult.hasErrors();
@@ -39,6 +43,11 @@ public class DemoController {
 
         model.addAttribute("version", appProperties.getVersion());
         model.addAttribute("userInfoDTOList", userInfoService.getAllUsers());
+
+        if (FeatureToggles.TEXT_BASED_SEARCH_VIA_ELASTIC_SEARCH.isActive()) {
+            flag = "released";
+        }
+        model.addAttribute("flag", flag);
 
         logger.info(bindingResult.toString());
 
