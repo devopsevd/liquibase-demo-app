@@ -9,9 +9,9 @@ import org.springframework.context.annotation.Primary;
 import org.togglz.spring.proxy.FeatureProxyFactoryBean;
 import org.togglz.core.repository.StateRepository;
 
-// import com.asimio.demo.togglz.service.SomeService;
-// import com.asimio.demo.togglz.service.impl.NewSomeServiceImpl;
-// import com.asimio.demo.togglz.service.impl.OldSomeServiceImpl;
+import com.premierinc.sboot.demo.service.SomeService;
+import com.premierinc.sboot.demo.service.impl.NewSomeServiceImpl;
+import com.premierinc.sboot.demo.service.impl.OldSomeServiceImpl;
 
 import redis.clients.jedis.JedisPool;
 
@@ -34,29 +34,29 @@ public class AppConfiguration {
                 .build();
     }
 
-    // @Bean
-    // public SomeService oldSomeService() {
-    //     return new OldSomeServiceImpl();
-    // }
+    @Bean
+    public SomeService oldSomeService() {
+        return new OldSomeServiceImpl();
+    }
 
-    // @Bean
-    // public SomeService newSomeService() {
-    //     return new NewSomeServiceImpl();
-    // }
+    @Bean
+    public SomeService newSomeService() {
+        return new NewSomeServiceImpl();
+    }
 
-    // @Bean
-    // public FeatureProxyFactoryBean proxiedSomeService() {
-    //     FeatureProxyFactoryBean proxyFactoryBean = new FeatureProxyFactoryBean();
-    //     proxyFactoryBean.setFeature(FeatureToggles.USE_NEW_SOMESERVICE.name());
-    //     proxyFactoryBean.setProxyType(SomeService.class);
-    //     proxyFactoryBean.setActive(this.newSomeService());
-    //     proxyFactoryBean.setInactive(this.oldSomeService());
-    //     return proxyFactoryBean;
-    // }
+    @Bean
+    public FeatureProxyFactoryBean proxiedSomeService() {
+        FeatureProxyFactoryBean proxyFactoryBean = new FeatureProxyFactoryBean();
+        proxyFactoryBean.setFeature(FeatureToggles.USE_NEW_SOMESERVICE.name());
+        proxyFactoryBean.setProxyType(SomeService.class);
+        proxyFactoryBean.setActive(this.newSomeService());
+        proxyFactoryBean.setInactive(this.oldSomeService());
+        return proxyFactoryBean;
+    }
 
-    // @Bean
-    // @Primary
-    // public SomeService someService(@Autowired FeatureProxyFactoryBean proxiedSomeService) throws Exception {
-    //     return (SomeService) proxiedSomeService.getObject();
-    // }
+    @Bean
+    @Primary
+    public SomeService someService(@Autowired FeatureProxyFactoryBean proxiedSomeService) throws Exception {
+        return (SomeService) proxiedSomeService.getObject();
+    }
 }
