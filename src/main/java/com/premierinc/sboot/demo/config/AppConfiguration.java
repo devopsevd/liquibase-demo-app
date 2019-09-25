@@ -1,17 +1,18 @@
 package com.premierinc.sboot.demo.config;
 
+import com.premierinc.sboot.demo.service.SomeService;
+import com.premierinc.sboot.demo.service.NewSomeServiceImpl;
+//import com.premierinc.sboot.demo.service.impl.*;
+// import com.premierinc.sboot.demo.service.impl.OldSomeServiceImpl;
+import com.premierinc.sboot.demo.service.OldSomeServiceImpl;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
-import org.togglz.spring.proxy.FeatureProxyFactoryBean;
 import org.togglz.core.repository.StateRepository;
-
-import com.premierinc.sboot.demo.service.SomeService;
-import com.premierinc.sboot.demo.service.impl.NewSomeServiceImpl;
-import com.premierinc.sboot.demo.service.impl.OldSomeServiceImpl;
+import org.togglz.spring.proxy.FeatureProxyFactoryBean;
 
 import redis.clients.jedis.JedisPool;
 

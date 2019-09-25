@@ -1,4 +1,4 @@
-package com.premierinc.sboot.demo.service.impl;
+package com.premierinc.sboot.demo.service;
 
 
 import com.premierinc.sboot.demo.service.SomeService;
