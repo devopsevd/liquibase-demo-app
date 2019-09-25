@@ -1,10 +1,10 @@
 package com.premierinc.sboot.demo.config;
 
-import com.premierinc.sboot.demo.service.SomeService;
-import com.premierinc.sboot.demo.service.NewSomeServiceImpl;
-//import com.premierinc.sboot.demo.service.impl.*;
-// import com.premierinc.sboot.demo.service.impl.OldSomeServiceImpl;
-import com.premierinc.sboot.demo.service.OldSomeServiceImpl;
+// import com.premierinc.sboot.demo.service.SomeService;
+// import com.premierinc.sboot.demo.service.NewSomeServiceImpl;
+// //import com.premierinc.sboot.demo.service.impl.*;
+// // import com.premierinc.sboot.demo.service.impl.OldSomeServiceImpl;
+// import com.premierinc.sboot.demo.service.OldSomeServiceImpl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -35,29 +35,29 @@ public class AppConfiguration {
                 .build();
     }
 
-    @Bean
-    public SomeService oldSomeService() {
-        return new OldSomeServiceImpl();
-    }
+    // @Bean
+    // public SomeService oldSomeService() {
+    //     return new OldSomeServiceImpl();
+    // }
 
-    @Bean
-    public SomeService newSomeService() {
-        return new NewSomeServiceImpl();
-    }
+    // @Bean
+    // public SomeService newSomeService() {
+    //     return new NewSomeServiceImpl();
+    // }
 
-    @Bean
-    public FeatureProxyFactoryBean proxiedSomeService() {
-        FeatureProxyFactoryBean proxyFactoryBean = new FeatureProxyFactoryBean();
-        proxyFactoryBean.setFeature(FeatureToggles.USE_NEW_SOMESERVICE.name());
-        proxyFactoryBean.setProxyType(SomeService.class);
-        proxyFactoryBean.setActive(this.newSomeService());
-        proxyFactoryBean.setInactive(this.oldSomeService());
-        return proxyFactoryBean;
-    }
+    // @Bean
+    // public FeatureProxyFactoryBean proxiedSomeService() {
+    //     FeatureProxyFactoryBean proxyFactoryBean = new FeatureProxyFactoryBean();
+    //     proxyFactoryBean.setFeature(FeatureToggles.USE_NEW_SOMESERVICE.name());
+    //     proxyFactoryBean.setProxyType(SomeService.class);
+    //     proxyFactoryBean.setActive(this.newSomeService());
+    //     proxyFactoryBean.setInactive(this.oldSomeService());
+    //     return proxyFactoryBean;
+    // }
 
-    @Bean
-    @Primary
-    public SomeService someService(@Autowired FeatureProxyFactoryBean proxiedSomeService) throws Exception {
-        return (SomeService) proxiedSomeService.getObject();
-    }
+    // @Bean
+    // @Primary
+    // public SomeService someService(@Autowired FeatureProxyFactoryBean proxiedSomeService) throws Exception {
+    //     return (SomeService) proxiedSomeService.getObject();
+    // }
 }
