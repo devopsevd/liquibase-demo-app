@@ -39,30 +39,30 @@ public class AppConfiguration {
     //     return new EnumBasedFeatureProvider(FeatureToggles.class);
     // }
 
-    @Bean
-    public SomeService oldSomeService() {
-    return new OldSomeServiceImpl();
-    }
+    // @Bean
+    // public SomeService oldSomeService() {
+    // return new OldSomeServiceImpl();
+    // }
 
-    @Bean
-    public SomeService newSomeService() {
-    return new NewSomeServiceImpl();
-    }
+    // @Bean
+    // public SomeService newSomeService() {
+    // return new NewSomeServiceImpl();
+    // }
 
-    @Bean
-    public FeatureProxyFactoryBean proxiedSomeService() {
-    FeatureProxyFactoryBean proxyFactoryBean = new FeatureProxyFactoryBean();
-    proxyFactoryBean.setFeature(FeatureToggles.USE_NEW_SOMESERVICE.name());
-    proxyFactoryBean.setProxyType(SomeService.class);
-    proxyFactoryBean.setActive(this.newSomeService());
-    proxyFactoryBean.setInactive(this.oldSomeService());
-    return proxyFactoryBean;
-    }
+    // @Bean
+    // public FeatureProxyFactoryBean proxiedSomeService() {
+    // FeatureProxyFactoryBean proxyFactoryBean = new FeatureProxyFactoryBean();
+    // proxyFactoryBean.setFeature(FeatureToggles.USE_NEW_SOMESERVICE.name());
+    // proxyFactoryBean.setProxyType(SomeService.class);
+    // proxyFactoryBean.setActive(this.newSomeService());
+    // proxyFactoryBean.setInactive(this.oldSomeService());
+    // return proxyFactoryBean;
+    // }
 
-    @Bean
-    @Primary
-    public SomeService someService(@Autowired FeatureProxyFactoryBean
-    proxiedSomeService) throws Exception {
-    return (SomeService) proxiedSomeService.getObject();
-    }
+    // @Bean
+    // @Primary
+    // public SomeService someService(@Autowired FeatureProxyFactoryBean
+    // proxiedSomeService) throws Exception {
+    // return (SomeService) proxiedSomeService.getObject();
+    // }
 }
