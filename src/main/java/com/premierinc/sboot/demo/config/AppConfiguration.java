@@ -34,10 +34,10 @@ public class AppConfiguration {
         return new RedisStateRepository.Builder().keyPrefix(togglzPrefix + ":").jedisPool(jedisPool).build();
     }
 
-    @Bean
-    public FeatureProvider featureProvider() {
-        return new EnumBasedFeatureProvider(FeatureToggles.class);
-    }
+    // @Bean
+    // public FeatureProvider featureProvider() {
+    //     return new EnumBasedFeatureProvider(FeatureToggles.class);
+    // }
 
     // @Bean
     // public SomeService oldSomeService() {
