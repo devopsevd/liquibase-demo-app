@@ -55,4 +55,4 @@ info:
 
 redisHost: localhost
 
-togglzPrefix: testApp_togglz
+togglzPrefix: liquiBaseApp_togglz
