@@ -56,7 +56,7 @@
                 <input class="lft" type="text" th:field="*{address}"/>
             </div>
 
-            <div class="clear spc5">
+            <div class="${flag} == 'unreleased' ? 'lft chr hidden' : 'clear spc5'">
                 <div th:class="${#fields.hasErrors('mobile')}? 'lft chr hasError' : 'lft chr hidden'">*</div>
                 <div class="lft lbl">Mobile: </div>
                 <input class="lft" type="text" th:field="*{mobile}"/>
