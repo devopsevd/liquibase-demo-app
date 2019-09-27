@@ -11,6 +11,7 @@
 
     <script type="text/javascript">
         $(document).ready(function() {
+            $('#mobile').hide();
             $('#input_emails').multiple_emails();
             $('#current_emails').text($('#input_emails').val());
             $('#input_emails').change( function(){
@@ -56,7 +57,7 @@
                 <input class="lft" type="text" th:field="*{address}"/>
             </div>
 
-            <div class="${flag} == 'unreleased' ? 'hidden' : 'clear spc5'">
+            <div id="mobile" class="clear spc5">
                 <div th:class="${#fields.hasErrors('mobile')}? 'lft chr hasError' : 'lft chr hidden'">*</div>
                 <div class="lft lbl">Mobile: </div>
                 <input class="lft" type="text" th:field="*{mobile}"/>
