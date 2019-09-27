@@ -10,7 +10,7 @@ import redis.clients.jedis.JedisPoolConfig;
 public class RedisConfig {
 
     //@Value("${redisHost}")
-    private String redisHost = "10.144.2.237:6379";
+    private String redisHost = "10.144.2.237";
 
 
     @Bean
