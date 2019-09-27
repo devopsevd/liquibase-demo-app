@@ -9,8 +9,8 @@ import redis.clients.jedis.JedisPoolConfig;
 @Configuration
 public class RedisConfig {
 
-    //@Value("${redisHost}")
-    private String redisHost = "10.144.2.237";
+    @Value("${redisHost}")
+    private String redisHost = "";
 
 
     @Bean

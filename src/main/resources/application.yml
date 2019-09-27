@@ -53,6 +53,6 @@ info:
   build:
     version: @project.version@
 
-redisHost: localhost
+redisHost: 10.144.2.237
 
 togglzPrefix: liquiBaseApp_togglz
