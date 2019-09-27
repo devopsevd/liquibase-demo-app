@@ -24,6 +24,10 @@ public class UserInfoDTO {
     @Size(min=1)
     private String address;
 
+    @NotNull
+    @Size(min=1)
+    private String mobile;
+
     private String userName;
 
     @NotNull
@@ -38,11 +42,12 @@ public class UserInfoDTO {
     public UserInfoDTO() {
     }
 
-    public UserInfoDTO(Integer id, String firstName, String lastName, String address, List<String> emailAddresses) {
+    public UserInfoDTO(Integer id, String firstName, String lastName, String address, String mobile, List<String> emailAddresses) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
+        this.mobile = mobile;
         this.userName = this.firstName + " " + this.lastName;
         this.emailAddresses = emailAddresses;
     }
@@ -79,6 +84,14 @@ public class UserInfoDTO {
         this.address = address;
     }
 
+    public String getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
+    }
+
     public String getUserName() {
         return userName;
     }
@@ -102,6 +115,7 @@ public class UserInfoDTO {
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", address='" + address + '\'' +
+                ", mobile='" + mobile + '\'' +
                 ", userName='" + userName + '\'' +
                 ", emailAddresses=" + emailAddresses +
                 '}';

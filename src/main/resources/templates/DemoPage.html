@@ -57,9 +57,9 @@
             </div>
 
             <div class="clear spc5">
-                <div th:class="${#fields.hasErrors('address')}? 'lft chr hasError' : 'lft chr hidden'">*</div>
-                <div class="lft lbl">City: </div>
-                <sup class="flag" th:text="'(' + ${flag} + ')'"></sup>
+                <div th:class="${#fields.hasErrors('mobile')}? 'lft chr hasError' : 'lft chr hidden'">*</div>
+                <div class="lft lbl">Mobile: </div>
+                <input class="lft" type="text" th:field="*{mobile}"/>
             </div>
 
             <div class="clear spc5">
