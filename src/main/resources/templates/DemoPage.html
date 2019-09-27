@@ -75,11 +75,13 @@
             <tr>
                 <th>Name</th>
                 <th>City</th>
+                <th>Mobile</th>
                 <th>Email Address</th>
             </tr>
             <tr th:each="userInfoDTO : ${userInfoDTOList}">
                 <td th:text="${userInfoDTO.userName}"></td>
                 <td th:text="${userInfoDTO.address}"></td>
+                <td th:text="${userInfoDTO.mobile}"></td>
                 <td th:text="${#strings.replace(#strings.replace(userInfoDTO.emailAddresses,'[',''),']','')}"></td>
             </tr>
         </table>
