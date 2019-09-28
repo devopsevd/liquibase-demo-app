@@ -11,6 +11,10 @@
 
     <script type="text/javascript">
         $(document).ready(function() {
+
+            var data = eval('('+'${flag}'+')');
+            console.log(data);
+
             $('#mobile').hide();
             $('#input_emails').multiple_emails();
             $('#current_emails').text($('#input_emails').val());
