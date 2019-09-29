@@ -29,7 +29,7 @@
     <img src="image/abc6.png" />
     <span>No Outage Deployment </span>
     <sup class="version" th:text="'(' + ${version} + ')'"></sup>
-    <input thi:class="hidden" type="hidden" id="flag" th:text="'(' + ${flag} + ')'"/>
+    <input th:class="hidden" type="hidden" id="flag" th:text="${flag}"/>
 </div>
 <div class="springOneForm">
     <form action="#" th:action="@{/demoPage}" th:object="${userInfoDTO}" method="post" novalidate="true">
