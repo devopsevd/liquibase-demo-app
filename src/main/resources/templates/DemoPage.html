@@ -13,11 +13,12 @@
         $(document).ready(function() {
 
             var flag = $('#flag').text();
-            var flaghtml =  $('#flag').html();
+            
             console.log(flag);
-            console.log(flaghtml);
-
-            $('#mobile').hide();
+            if (flag == "unreleased"){
+                $('#mobile').hide();
+            }
+           
             $('#input_emails').multiple_emails();
             $('#current_emails').text($('#input_emails').val());
             $('#input_emails').change( function(){
