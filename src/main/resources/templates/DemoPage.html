@@ -12,7 +12,7 @@
     <script type="text/javascript">
         $(document).ready(function() {
 
-            var data = "${flag}";
+            var flag = $('#flag').val();
             console.log(data);
 
             $('#mobile').hide();
@@ -29,6 +29,7 @@
     <img src="image/abc6.png" />
     <span>No Outage Deployment </span>
     <sup class="version" th:text="'(' + ${version} + ')'"></sup>
+    <input type="hidden" id="flag" value='${flag}'/>
 </div>
 <div class="springOneForm">
     <form action="#" th:action="@{/demoPage}" th:object="${userInfoDTO}" method="post" novalidate="true">
