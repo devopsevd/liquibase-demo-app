@@ -17,6 +17,7 @@
             console.log(flag);
             if (flag == "unreleased"){
                 $('#mobile').hide();
+                $('#mobile_th').hide();
                 $('#mobile_td').hide();
             }
            
@@ -85,7 +86,7 @@
             <tr>
                 <th>Name</th>
                 <th>City</th>
-                <th>Mobile</th>
+                <th id="mobile_th">Mobile</th>
                 <th>Email Address</th>
             </tr>
             <tr th:each="userInfoDTO : ${userInfoDTOList}">
