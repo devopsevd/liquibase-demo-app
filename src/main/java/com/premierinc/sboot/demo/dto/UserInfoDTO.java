@@ -5,7 +5,18 @@ import org.springframework.stereotype.Component;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+
+import com.premierinc.sboot.demo.validations.NotNullIfAnotherFieldHasValue;
+
 import java.util.List;
+
+
+@NotNullIfAnotherFieldHasValue.List({
+    @NotNullIfAnotherFieldHasValue(
+        fieldName = "flag",
+        fieldValue = "disabled",
+        dependFieldName = "mobile")
+})
 
 @Component
 public class UserInfoDTO {
@@ -47,11 +58,7 @@ public class UserInfoDTO {
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
-        if (mobile != null) {
-            this.mobile = mobile;
-        } else {
-            this.mobile = "0000000000";
-        }
+        this.mobile = mobile;
         
         this.userName = this.firstName + " " + this.lastName;
         this.emailAddresses = emailAddresses;
