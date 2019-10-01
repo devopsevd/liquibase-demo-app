@@ -50,7 +50,7 @@ public class UserInfoDTO {
         if (mobile != "") {
             this.mobile = mobile;
         } else {
-            this.mobile = "0000000000"
+            this.mobile = "0000000000";
         }
         
         this.userName = this.firstName + " " + this.lastName;
