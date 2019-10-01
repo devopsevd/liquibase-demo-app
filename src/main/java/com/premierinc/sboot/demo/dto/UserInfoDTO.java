@@ -35,8 +35,8 @@ public class UserInfoDTO {
     @Size(min=1)
     private String address;
 
-    // @NotNull
-    // @Size(min=1)
+    @NotNull
+    @Size(min=1)
     private String mobile;
 
     private String userName;
