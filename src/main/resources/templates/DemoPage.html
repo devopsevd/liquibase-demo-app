@@ -18,11 +18,18 @@
             if (flag == "unreleased"){
                 $('#mobile').val("NA");
                 $('#mobile').hide();
-                $('#mobile_th').hide();
-                $('#mobile_td').hide();
+                // $('#mobile_th').hide();
+                // $('#mobile_td').hide();
+                hideColumnColorRow(4);
                
             }
            
+            hideColumnColorRow = function (column) {
+                $('td:nth-child(' + column + '),th:nth-child( ' + column + ')').hide();
+
+                //$('tr').find('td:nth-child(' + column + '):contains(Yes)').parent().css('backgroundColor', 'LightGreen'); // Could be an hexadecimal value as #EE3B3B 
+            };
+
             $('#input_emails').multiple_emails();
             $('#current_emails').text($('#input_emails').val());
             $('#input_emails').change( function(){
@@ -88,14 +95,14 @@
             <tr>
                 <th>Name</th>
                 <th>City</th>
-                <th id="mobile_th">Mobile</th>
                 <th>Email Address</th>
+                <th id="mobile_th">Mobile</th>
             </tr>
             <tr th:each="userInfoDTO : ${userInfoDTOList}">
                 <td th:text="${userInfoDTO.userName}"></td>
-                <td th:text="${userInfoDTO.address}"></td>
-                <td id="mobile_td" th:text="${userInfoDTO.mobile}"></td>
+                <td th:text="${userInfoDTO.address}"></td>                
                 <td th:text="${#strings.replace(#strings.replace(userInfoDTO.emailAddresses,'[',''),']','')}"></td>
+                <td id="mobile_td" th:text="${userInfoDTO.mobile}"></td>
             </tr>
         </table>
     </fieldset>
