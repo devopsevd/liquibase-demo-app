@@ -44,7 +44,7 @@ public class DemoController {
         model.addAttribute("version", appProperties.getVersion());
         model.addAttribute("userInfoDTOList", userInfoService.getAllUsers());
 
-        if (FeatureToggles.TEXT_BASED_SEARCH_VIA_ELASTIC_SEARCH.isActive()) {
+        if (FeatureToggles.MOBILE_NUMBER_FIELD.isActive()) {
             flag = "released";
         }
         model.addAttribute("flag", flag);
