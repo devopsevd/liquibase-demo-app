@@ -36,7 +36,7 @@ public class NotNullIfAnotherFieldHasValueValidator
         }
 
         try {
-             boolean checkFlag = FeatureToggles.TEXT_BASED_SEARCH_VIA_ELASTIC_SEARCH.isActive();
+             boolean checkFlag = FeatureToggles.MOBILE_NUMBER_FIELD.isActive();
             //String fieldValue       = BeanUtils.getProperty(value, fieldName);
             String dependFieldValue = BeanUtils.getProperty(value, dependFieldName);
 
