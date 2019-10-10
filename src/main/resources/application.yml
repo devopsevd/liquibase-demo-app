@@ -43,7 +43,7 @@ togglz:
 #    TEXT_BASED_SEARCH_VIA_ELASTIC_SEARCH:
 #      enabled: true
     MOBILE_NUMBER_FIELD:
-      enabled: true
+      enabled: false
 #    CONTENT_RETRIEVAL_VIA_CMS:
 #      enabled: false
 #    USE_NEW_SOMESERVICE:
