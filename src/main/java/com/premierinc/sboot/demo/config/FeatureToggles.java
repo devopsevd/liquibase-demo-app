@@ -9,6 +9,9 @@ public enum FeatureToggles implements Feature {
     @Label("New Elastic Search Backend replacing RDBMS for text-based searches.")
     TEXT_BASED_SEARCH_VIA_ELASTIC_SEARCH,
 
+    @Label("Mobile number field.")
+    MOBILE_NUMBER_FIELD,
+
     @Label("New content retrieval via CMS instead of text files.")
     CONTENT_RETRIEVAL_VIA_CMS,
 
