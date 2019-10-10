@@ -18,17 +18,17 @@
             if (flag == "unreleased"){
                 $('#mobile').val("NA");
                 $('#mobile').hide();
-                // $('#mobile_th').hide();
-                // $('#mobile_td').hide();
-                hideColumnColorRow(4);
+                 $('#mobile_th').hide();
+                 $('#mobile_td').hide();
+               // hideColumnColorRow(4);
                
             }
            
-            hideColumnColorRow = function (column) {
-                $('td:nth-child(' + column + '),th:nth-child( ' + column + ')').hide();
+            // hideColumnColorRow = function (column) {
+            //     $('td:nth-child(' + column + '),th:nth-child( ' + column + ')').hide();
 
-                //$('tr').find('td:nth-child(' + column + '):contains(Yes)').parent().css('backgroundColor', 'LightGreen'); // Could be an hexadecimal value as #EE3B3B 
-            };
+            //     //$('tr').find('td:nth-child(' + column + '):contains(Yes)').parent().css('backgroundColor', 'LightGreen'); // Could be an hexadecimal value as #EE3B3B 
+            // };
 
             $('#input_emails').multiple_emails();
             $('#current_emails').text($('#input_emails').val());
