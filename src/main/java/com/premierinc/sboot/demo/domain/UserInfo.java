@@ -1,44 +1,62 @@
 package com.premierinc.sboot.demo.domain;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Table(name="USER_INFO")
 public class UserInfo implements Serializable{
 
+    private static final long serialVersionUID = 3541377415778960610L;
+
     @Id
-    @Column(name="USER_LOGIN_NAME")
-    private String userLoginName;
+    @SequenceGenerator(name="USER_ID_SEQ", sequenceName="USER_ID_SEQ", allocationSize=1)
+    @GeneratedValue(strategy= GenerationType.SEQUENCE, generator="USER_ID_SEQ")
+    @Column(name="USER_ID")
+    private Integer userId;
 
     @Column(name="LAST_NAME")
     private String lastName;
 
     @Column(name="FIRST_NAME")
     private String firstName;
+    
+    @Column(name="ADDRESS")
+    private String address;
 
-    @Column(name="PRIMARY_EMAIL")
-    private String primaryEmail;
+    @Column(name="MOBILE")
+    private String mobile;
+
+    @OneToMany(mappedBy = "userInfo", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    private List<CommunicationPref> communicationPrefs;
 
     public UserInfo() {
     }
 
-    public UserInfo(String userLoginName, String lastName, String firstName, String primaryEmail) {
-        this.userLoginName = userLoginName;
+    public UserInfo(Integer userId, String lastName, String firstName, String address, String mobile) {
+        this.userId = userId;
         this.lastName = lastName;
         this.firstName = firstName;
-        this.primaryEmail = primaryEmail;
+        this.address = address;
+        this.mobile = mobile;
     }
 
-    public String getUserLoginName() {
-        return userLoginName;
+    public Integer getUserId() {
+        return userId;
     }
 
-    public void setUserLoginName(String userLoginName) {
-        this.userLoginName = userLoginName;
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
     public String getLastName() {
@@ -56,36 +74,41 @@ public class UserInfo implements Serializable{
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
-
-    public String getPrimaryEmail() {
-        return primaryEmail;
+    
+    public String getAddress() {
+        return address;
     }
 
-    public void setPrimaryEmail(String primaryEmail) {
-        this.primaryEmail = primaryEmail;
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
+    }
+
+
+    public List<CommunicationPref> getCommunicationPrefs() {
+        return communicationPrefs;
+    }
+
+    public void setCommunicationPrefs(List<CommunicationPref> communicationPrefs) {
+        this.communicationPrefs = communicationPrefs;
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        UserInfo userInfo = (UserInfo) o;
-
-        if (userLoginName != null ? !userLoginName.equals(userInfo.userLoginName) : userInfo.userLoginName != null)
-            return false;
-        if (lastName != null ? !lastName.equals(userInfo.lastName) : userInfo.lastName != null) return false;
-        if (firstName != null ? !firstName.equals(userInfo.firstName) : userInfo.firstName != null) return false;
-        return primaryEmail != null ? primaryEmail.equals(userInfo.primaryEmail) : userInfo.primaryEmail == null;
-
-    }
-
-    @Override
-    public int hashCode() {
-        int result = userLoginName != null ? userLoginName.hashCode() : 0;
-        result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
-        result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
-        result = 31 * result + (primaryEmail != null ? primaryEmail.hashCode() : 0);
-        return result;
+    public String toString() {
+        return "UserInfo{" +
+                "userId='" + userId + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", address='" + address + '\'' +
+                ", mobile='" + mobile + '\'' +
+                ", communicationPrefs=" + communicationPrefs +
+                '}';
     }
 }

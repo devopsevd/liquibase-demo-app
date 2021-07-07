@@ -13,8 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.validation.Valid;
 
+import com.premierinc.sboot.demo.config.FeatureToggles;
+
 @Controller
-@RequestMapping("SpringIODemo")
 public class DemoController {
 
     private static final Logger logger = LoggerFactory.getLogger(DemoController.class);
@@ -26,31 +27,34 @@ public class DemoController {
     UserInfoService userInfoService;
 
     @RequestMapping("/demoPage")
-    public String addUser(Model model) {
-
-        model.addAttribute("userInfoDTO", new UserInfoDTO());
-        model.addAttribute("name", appProperties.getEnv());
-        model.addAttribute("userInfoDTOList", userInfoService.getAllUsers());
-
-        return "demopage";
-    }
-
-    @RequestMapping("/addUser")
     public String addUser(@Valid UserInfoDTO userInfoDTO, BindingResult bindingResult, Model model) {
+
+        String flag = "unreleased";
 
         logger.info("UserInfo submitted: " + userInfoDTO);
 
-        if(!bindingResult.hasErrors()){
+        boolean hasErrors = bindingResult.hasErrors();
+        if(!hasErrors){
             userInfoService.update(userInfoDTO);
             model.addAttribute("userInfoDTO", new UserInfoDTO());
         }else{
             model.addAttribute("userInfoDTO", userInfoDTO);
         }
 
-        model.addAttribute("name", appProperties.getEnv());
+        model.addAttribute("version", appProperties.getVersion());
         model.addAttribute("userInfoDTOList", userInfoService.getAllUsers());
 
+        if (FeatureToggles.MOBILE_NUMBER_FIELD.isActive()) {
+            flag = "released";
+        }
+        model.addAttribute("flag", flag);
+
         logger.info(bindingResult.toString());
-        return "demopage";
+
+        if(!hasErrors){
+            return "redirect:/demoPage";
+        }else{
+            return "DemoPage";
+        }
     }
 }

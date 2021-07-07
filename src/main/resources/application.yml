@@ -1,9 +1,9 @@
 spring:
   datasource:
     driverClassName: org.postgresql.Driver
-    username: abarring
-    password: ""
-    url: jdbc:postgresql://localhost:5432/sboot_demo
+    username: demo
+    password: "demo_pass"
+    url: jdbc:postgresql://${SBOOT_DEMO_PG_PORT_5432_TCP_ADDR}:${SBOOT_DEMO_PG_PORT_5432_TCP_PORT}/sboot_demo
   jpa:
     database: POSTGRESQL
     show-sql: true
@@ -18,6 +18,7 @@ logging:
 
 server:
   port: 8180
+  contextPath: /SpringIODemo
 
 hibernate:
   dialect: org.hibernate.dialect.PostgreSQLDialect
@@ -27,5 +28,33 @@ hibernate:
     auto: none
 
 app:
-  env: blue/green
+  version: vx.x-default
 
+togglz:
+#  enabled: true # Enabled by default
+#  featureEnums:
+#    com.asimio.demo.togglz.config.FeatureToggles
+  console:
+    enabled: true
+    path: /app-admin
+    secured: false
+    use-management-port: false
+  features:
+#    TEXT_BASED_SEARCH_VIA_ELASTIC_SEARCH:
+#      enabled: true
+    MOBILE_NUMBER_FIELD:
+      enabled: false
+#    CONTENT_RETRIEVAL_VIA_CMS:
+#      enabled: false
+#    USE_NEW_SOMESERVICE:
+#      enabled: true
+
+info:
+  app:
+    name: @project.artifactId@
+  build:
+    version: @project.version@
+
+redisHost: redis_db
+
+togglzPrefix: liquiBaseApp_togglz
